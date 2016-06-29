@@ -30,8 +30,15 @@ do
 
 done
 
-# remove duplicate hosts and save the real hosts file
-sort ${TMP_HOSTS} | uniq > ${HOSTS}
+lines=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
+# Number of lines is 51010 as of 29 June 2016. A minimum of 45000 seems like a good indicator of success.
+if [ $lines -ge 45000 ]
+then
+    # remove duplicate hosts and save the real hosts file
+    sort ${TMP_HOSTS} | uniq > ${HOSTS}
+else
+    logger "Adblock.sh: TMP_HOSTS has fewer than 45000 lines - leaving old HOSTS alone"
+fi
 
 rm ${TMP_HOSTS} 2> /dev/null
 

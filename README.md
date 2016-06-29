@@ -25,9 +25,17 @@ list addnhosts '/tmp/block.hosts'
 ```
 
 ####Run on boot.
-* Add the following to /etc/rc.local (In LuCI, it's System > Startup) [the sleep is to make sure that your connection is fully up]
+* Add the following to /etc/rc.local (In LuCI, it's System > Startup) [the sleep is to make sure that your connection is fully up - the sleep period may need to be increased for slower routers and connections]
 ```
 sleep 15 && /etc/adblock.sh &
+```
+
+####Prerequisites
+* Make sure you have the neccesary SSL root certificates (the hosts-file.net list uses https)
+
+```
+opkg update
+opkg install wget ca-certificates
 ```
 
 ####Optional - serve a 1 pixel transparent .gif for all of the newly un-routable things.

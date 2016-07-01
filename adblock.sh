@@ -9,8 +9,11 @@ rm ${TMP_HOSTS} 2> /dev/null
 for URL in \
     "http://adaway.org/hosts.txt" \
     "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
+    "https://hosts-file.net/ad_servers.txt" \
+    "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext" \
+    "http://someonewhocares.org/hosts/hosts" \
     "http://hosts-file.net/ad_servers.txt" \
-    "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+    "http://winhelp2002.mvps.org/hosts.txt"
 do
     # grab a hosts file and...
     # filter out comment lines
@@ -31,8 +34,9 @@ do
 done
 
 lines=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
-# Number of lines is 51010 as of 29 June 2016. A minimum of 45000 seems like a good indicator of success.
-if [ $lines -ge 45000 ]
+
+# Number of lines is 69313 as of 1 July 2016. A minimum of 65000 seems like a good indicator of success.
+if [ $lines -ge 65000 ]
 then
     # remove duplicate hosts and save the real hosts file
     sort ${TMP_HOSTS} | uniq > ${HOSTS}

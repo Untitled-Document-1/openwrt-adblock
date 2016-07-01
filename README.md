@@ -5,7 +5,7 @@ hosts file based ad blocking for OpenWRT
 
 * Download the ad block script, save it to /etc/, and make it executable.
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/jjack/openwrt-adblock/master/adbblock.sh -O /etc/adblock.sh
+wget --no-check-certificate https://raw.githubusercontent.com/Untitled-Document-1/openwrt-adblock/master/adblock.sh -O /etc/adblock.sh
 chmod +x /etc/adblock.sh
 ```
 
@@ -31,7 +31,7 @@ sleep 15 && /etc/adblock.sh &
 ```
 
 ####Prerequisites
-* Make sure you have the neccesary SSL root certificates (the hosts-file.net list uses https)
+* Make sure you have the necessary SSL root certificates. This will prevent a "wget: can't execute 'openssl': No such file or directory" error when the script attempts to download the hosts-file.net list.
 
 ```
 opkg update

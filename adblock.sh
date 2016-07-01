@@ -34,14 +34,16 @@ do
 done
 
 lines=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
-
 # Number of lines is 69313 as of 1 July 2016. A minimum of 65000 seems like a good indicator of success.
-if [ $lines -ge 65000 ]
+threshold=65000
+
+# Test if threshold met
+if [ $lines -ge $threshold ]
 then
     # remove duplicate hosts and save the real hosts file
     sort ${TMP_HOSTS} | uniq > ${HOSTS}
 else
-    logger "Adblock.sh: TMP_HOSTS has fewer than 45000 lines - leaving old HOSTS alone"
+    logger "Adblock.sh: TMP_HOSTS has fewer than ${threshold} lines - leaving old HOSTS alone"
 fi
 
 rm ${TMP_HOSTS} 2> /dev/null

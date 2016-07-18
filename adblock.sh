@@ -1,7 +1,19 @@
 #!/bin/ash
-
 TMP_HOSTS=/tmp/block.hosts.unsorted
 HOSTS=/tmp/block.hosts
+
+# Number of lines is 69313 as of 1 July 2016. A minimum of 65000 seems like a good indicator of success.
+threshold=65000
+lines_curr_file=`wc -l ${HOSTS} | awk '{print $1}'`
+date_modified=`date -r ${HOSTS} +%Y-%m-%d`
+today=`date +%Y-%m-%d`
+
+# Only update the list once a day, unless the file didn't meet lines threshold
+if [ $date_modified == $today ] && [ $lines_curr_file -ge $threshold ] ;
+then
+	logger "Skipping Adblock.sh"
+	exit 0
+fi
 
 # remove any old TMP_HOSTS that might have stuck around
 rm ${TMP_HOSTS} 2> /dev/null
@@ -34,8 +46,6 @@ do
 done
 
 lines=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
-# Number of lines is 69313 as of 1 July 2016. A minimum of 65000 seems like a good indicator of success.
-threshold=65000
 
 # Test if threshold met
 if [ $lines -ge $threshold ]

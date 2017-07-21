@@ -8,11 +8,14 @@ lines_curr_file=`wc -l ${HOSTS} | awk '{print $1}'`
 date_modified=`date -r ${HOSTS} +%Y-%m-%d`
 today=`date +%Y-%m-%d`
 
-# Only update the list once a day, unless the file didn't meet lines threshold
-if [ $date_modified == $today ] && [ $lines_curr_file -ge $threshold ] ;
+# Only update the file once a day, unless the file didn't meet lines threshold
+if [ -f ${HOSTS} ]
 then
-	logger "Skipping Adblock.sh"
-	exit 0
+	if [ $date_modified == $today ] && [ $lines_curr_file -ge $threshold ] ;
+	then
+		logger "Skipping Adblock.sh"
+		exit 0
+	fi
 fi
 
 # remove any old TMP_HOSTS that might have stuck around

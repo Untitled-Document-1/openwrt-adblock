@@ -4,13 +4,13 @@ HOSTS=/tmp/block.hosts
 
 # Number of lines is 69313 as of 1 July 2016. A minimum of 65000 seems like a good indicator of success.
 threshold=65000
-lines_curr_file=`wc -l ${HOSTS} | awk '{print $1}'`
-date_modified=`date -r ${HOSTS} +%Y-%m-%d`
 today=`date +%Y-%m-%d`
 
-# Only update the file once a day, unless the file didn't meet lines threshold
 if [ -f ${HOSTS} ]
 then
+lines_curr_file=`wc -l ${HOSTS} | awk '{print $1}'`
+date_modified=`date -r ${HOSTS} +%Y-%m-%d`
+	# Only update the file once a day, unless the file didn't meet lines threshold
 	if [ $date_modified == $today ] && [ $lines_curr_file -ge $threshold ] ;
 	then
 		logger "Skipping Adblock.sh"

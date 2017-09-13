@@ -24,7 +24,6 @@ rm ${TMP_HOSTS} 2> /dev/null
 for URL in \
     "http://adaway.org/hosts.txt" \
     "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
-    "https://hosts-file.net/ad_servers.txt" \
     "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext" \
     "http://someonewhocares.org/hosts/hosts" \
     "http://hosts-file.net/ad_servers.txt" \

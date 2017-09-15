@@ -18,11 +18,11 @@ chmod +x /etc/adblock.sh
 ```
 
 * Tell dnsmasq to use the blocked hosts file that ```adblock.sh``` generates:
-    * If you have LuCI, Network > DHCP and DNS > Resolv and Hosts Files > Additional Hosts files
+    * If you have LuCI, navigate to ```Network``` > ```DHCP and DNS``` > ```Resolv and Hosts Files``` tab > ```Additional Hosts files``` field. Add the following:
     ```
     /tmp/block.hosts
     ```
-    * If you don't, add the following to /etc/config/dhcp under 'config dnsmasq'
+    * If you don't have LuCI, add the following to ```/etc/config/dhcp``` under ```config dnsmasq```:
     ```
     list addnhosts '/tmp/block.hosts'
     ```

@@ -2,7 +2,7 @@
 Hosts file based ad blocking for OpenWRT / LEDE
 
 #### Prerequisites ####
-* Make sure you have the necessary SSL root certificates. This will prevent a possible "wget: can't execute 'openssl': No such file or directory" error when the script attempts to download the hosts-file.net list.
+* Make sure you have the necessary SSL root certificates. This will prevent a possible ```wget: can't execute 'openssl': No such file or directory``` error when the script attempts to download the hosts-file.net list.
 
 ```
 opkg update
@@ -38,7 +38,7 @@ chmod +x /etc/adblock.sh
 sleep 60 && /etc/adblock.sh &
 ```
 #### Alternatively: add a cron job ####
-* If your router is not restarted very often then a cron job may more suitable for keeping the blocked hosts file up-to-date. The following example shows a cron job that runs at 4am every day.
+* If your router is not restarted very often then a cron job may more suitable for keeping the blocked hosts file up-to-date. The following example shows a cron job that runs at 4am every day:
 ````
 0 4 * * * /etc/adblock.sh
 ````

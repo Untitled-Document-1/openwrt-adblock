@@ -11,7 +11,7 @@ opkg install wget ca-certificates
 
 #### To use it ####
 
-* Download the ad block script, save it to ```/etc```, and make it executable.
+* Download the ad block script, save it to ```/etc```, and make it executable:
 ```
 wget --no-check-certificate https://raw.githubusercontent.com/Untitled-Document-1/openwrt-adblock/master/adblock.sh -O /etc/adblock.sh
 chmod +x /etc/adblock.sh

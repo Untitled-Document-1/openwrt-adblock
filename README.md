@@ -17,7 +17,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/Untitled-Document-
 chmod +x /etc/adblock.sh
 ```
 
-* Tell dnsmasq to use the hosts that ```adblock.sh``` generates:
+* Tell dnsmasq to use the blocked hosts file that ```adblock.sh``` generates:
     * If you have LuCI, Network > DHCP and DNS > Resolv and Hosts Files > Additional Hosts files
     ```
     /tmp/block.hosts

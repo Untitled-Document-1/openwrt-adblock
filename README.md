@@ -33,7 +33,8 @@ chmod +x /etc/adblock.sh
 ```
 
 #### Run on boot ####
-* Add the following to ```/etc/rc.local``` (In LuCI, it's System > Startup) [the sleep is to make sure that your connection is fully up - the sleep period may need to be increased for slower routers and connections]
+* Add the following to ```/etc/rc.local``` (In LuCI, it's System > Startup)  
+[the sleep is to make sure that your connection is fully up - the sleep period may need to be increased for slower routers and connections]
 ```
 sleep 60 && /etc/adblock.sh &
 ```
@@ -42,7 +43,7 @@ sleep 60 && /etc/adblock.sh &
 ````
 0 4 * * * /etc/adblock.sh
 ````
-Please note: in the above example, even though the script is scheduled to run everyday, the script contains a conditional that considers the existing blocked hosts file to be stale after 14 days. Only after 14 days will the file be re-created from the up-to-date lists. If you feel 14 days is too long and you want your file updated more frequently, then edit the script (```STALE_DAYS``` variable).
+Please note: in the above example, even though the script is scheduled to run every day, the script contains a conditional that considers the existing blocked hosts file to be stale after 14 days. Only after 14 days will the file be re-created from the up-to-date lists. If you feel 14 days is too long and you want your file updated more frequently, then edit the script (```STALE_DAYS``` variable).
 
 #### Optional - serve a 1 pixel transparent .gif for all of the newly un-routable things ####
 ```

@@ -30,7 +30,6 @@ do
     wget -qO- "${URL}" | awk '/^(127|0)\.0\.0\.(0|1)/{print "0.0.0.0",$2}' >> ${TMP_HOSTS}
 done
 
-
 LINES=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
 # Test if threshold met
 if [ ${LINES} -ge ${THRESHOLD} ]

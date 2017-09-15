@@ -8,7 +8,7 @@ TMP_HOSTS=/tmp/block.hosts.unsorted
 if [ -f ${HOSTS} ]
 then
 	EXISTING_HOSTS_LINE_COUNT=`wc -l ${HOSTS} | awk '{print $1}'`
-	YOUNG_FILE=`find ${HOSTS} -mtime -{STALE_DAYS} -print0`
+	YOUNG_FILE=`find ${HOSTS} -mtime -${STALE_DAYS} -print0`
 	# Do not re-create block.hosts if file younger than 14 days, OR the file didn't meet the minimum lines threshold
 	if [ -f "${YOUNG_FILE}" ] && [ ${EXISTING_HOSTS_LINE_COUNT} -ge ${THRESHOLD} ] ;
 	then

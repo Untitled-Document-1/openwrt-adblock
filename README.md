@@ -27,7 +27,7 @@ chmod +x /etc/adblock.sh
     list addnhosts '/tmp/block.hosts'
     ```
 
-* Run the adblock script.
+* Run the adblock script:
 ```
 /etc/adblock.sh
 ```

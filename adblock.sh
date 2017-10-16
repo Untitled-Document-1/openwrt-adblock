@@ -4,17 +4,24 @@ STALE_DAYS=14
 THRESHOLD=65000
 TMP_HOSTS=/tmp/block.hosts.unsorted
 
-# If a block.hosts file already exists...
-if [ -f ${HOSTS} ]
+if [ $# -eq 0 ]
 then
-	EXISTING_HOSTS_LINE_COUNT=`wc -l ${HOSTS} | awk '{print $1}'`
-	YOUNG_FILE=`find ${HOSTS} -mtime -${STALE_DAYS} -print0`
-	# Do not re-create block.hosts if file younger than ${STALE_DAYS}, OR the file didn't meet the minimum lines threshold
-	if [ -f "${YOUNG_FILE}" ] && [ ${EXISTING_HOSTS_LINE_COUNT} -ge ${THRESHOLD} ] ;
+	# If a block.hosts file already exists...
+	if [ -f ${HOSTS} ]
 	then
-		logger "Adblock.sh: skipping download"
-		exit 0
+		EXISTING_HOSTS_LINE_COUNT=`wc -l ${HOSTS} | awk '{print $1}'`
+		YOUNG_FILE=`find ${HOSTS} -mtime -${STALE_DAYS} -print0`
+		# Only update the file if it's considered old, unless the file didn't meet the lines threshold
+		if [ -f "${YOUNG_FILE}" ] && [ ${EXISTING_HOSTS_LINE_COUNT} -ge ${THRESHOLD} ] ;
+		then
+			logger "Adblock.sh: skipping download"
+			exit 0
+		fi
 	fi
+elif [ $# -gt 0 -a "$1" = '--force' ]
+then
+	#  Colon when the shell syntax requires a command but you have nothing to do
+	:
 fi
 
 # remove any old TMP_HOSTS that might have stuck around

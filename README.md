@@ -32,6 +32,8 @@ chmod +x /etc/adblock.sh
 /etc/adblock.sh
 ```
 
+Note: you can now skip the age and lines threshold checks with the ```--force``` option
+
 #### Run on boot ####
 * Add the following to ```/etc/rc.local``` (In LuCI, it's System > Startup)  
 [the sleep is to make sure that your connection is fully up - the sleep period may need to be increased for slower routers and connections]

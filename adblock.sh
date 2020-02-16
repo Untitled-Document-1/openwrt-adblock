@@ -43,7 +43,7 @@ LINES=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
 if [ ${LINES} -ge ${THRESHOLD} ]
 then
     # remove duplicate hosts and save the real hosts file
-	sort -u ${TMP_HOSTS} > ${HOSTS}
+	nice -n19 sort -u ${TMP_HOSTS} > ${HOSTS}
 	logger "Adblock.sh: ${HOSTS} re-created"
 else
     logger "Adblock.sh: ${TMP_HOSTS} has fewer than ${THRESHOLD} lines - leaving old HOSTS alone"

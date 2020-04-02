@@ -32,7 +32,6 @@ for URL in \
     "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
     "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext" \
     "http://someonewhocares.org/hosts/hosts" \
-    "http://hosts-file.net/ad_servers.txt" \
     "http://winhelp2002.mvps.org/hosts.txt"
 do
     wget -qO- "${URL}" | awk '/^(127|0)\.0\.0\.(0|1)/{print "0.0.0.0",$2}' >> ${TMP_HOSTS}

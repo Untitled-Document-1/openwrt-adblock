@@ -39,8 +39,8 @@ do
 done
 
 LINES=`wc -l ${TMP_HOSTS} | awk '{print $1}'`
-# Test if threshold met
-if [ ${LINES} -ge ${THRESHOLD} ]
+# Test if threshold met or hosts file doesn't exist
+if [ ${LINES} -ge ${THRESHOLD} ] || [ ! -f ${HOSTS} ]
 then
     # remove duplicate hosts and save the real hosts file
 	nice -n19 sort -u ${TMP_HOSTS} > ${HOSTS}

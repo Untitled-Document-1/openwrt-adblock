@@ -1,7 +1,7 @@
 #!/bin/ash
 HOSTS=/tmp/block.hosts
 STALE_DAYS=14
-THRESHOLD=65000
+THRESHOLD=35000
 TMP_HOSTS=/tmp/block.hosts.unsorted
 
 if [ $# -eq 0 ]

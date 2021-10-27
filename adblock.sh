@@ -30,11 +30,10 @@ fi
 rm ${TMP_HOSTS} 2> /dev/null
 
 for URL in \
-    "http://adaway.org/hosts.txt" \
-    "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
-    "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext" \
-    "http://someonewhocares.org/hosts/hosts" \
-    "http://winhelp2002.mvps.org/hosts.txt"
+    "https://adaway.org/hosts.txt" \
+    "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext" \
+    "https://someonewhocares.org/hosts/hosts" \
+    "https://winhelp2002.mvps.org/hosts.txt"
 do
     wget -qO- "${URL}" | awk '/^(127|0)\.0\.0\.(0|1)/{print "0.0.0.0",$2}' >> ${TMP_HOSTS}
 done

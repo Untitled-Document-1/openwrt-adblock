@@ -1,8 +1,10 @@
 #!/bin/ash
 HOSTS=/tmp/block.hosts
 STALE_DAYS=14
-THRESHOLD=35000
+THRESHOLD=5000
 TMP_HOSTS=/tmp/block.hosts.unsorted
+EXCEPTIONS="aax-eu.amazon-adsystem.com stats.g.doubleclick.net tag.aticdn.net www.google-analytics.com"
+ADDITIONS="www.huntingmilf.net main.exosrv.com stags.bluekai.com engine.addroplet.com opinion.a.promo-market.net new-a-giftcard-uk.amazando.co iociley.com belombrea.com"
 
 if [ $# -eq 0 ]
 then
@@ -35,6 +37,16 @@ for URL in \
     "http://winhelp2002.mvps.org/hosts.txt"
 do
     wget -qO- "${URL}" | awk '/^(127|0)\.0\.0\.(0|1)/{print "0.0.0.0",$2}' >> ${TMP_HOSTS}
+done
+
+for e in $EXCEPTIONS
+do
+    sed -e "/$e/ s/^#*/# /" -i ${TMP_HOSTS}
+done
+
+for a in $ADDITIONS
+do
+    echo 0.0.0.0 $a >> ${TMP_HOSTS}
 done
 
 LINES=`wc -l ${TMP_HOSTS} | awk '{print $1}'`

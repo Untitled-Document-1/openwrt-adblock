@@ -3,7 +3,7 @@ HOSTS=/tmp/block.hosts
 STALE_DAYS=14
 THRESHOLD=5000
 TMP_HOSTS=/tmp/block.hosts.unsorted
-EXCEPTIONS="aax-eu.amazon-adsystem.com stats.g.doubleclick.net tag.aticdn.net www.google-analytics.com"
+EXCEPTIONS="aax-eu.amazon-adsystem.com stats.g.doubleclick.net tag.aticdn.net www.google-analytics.com ad.doubleclick.net metrics.brightcove.com ssl.google-analytics.com"
 ADDITIONS="www.huntingmilf.net main.exosrv.com stags.bluekai.com engine.addroplet.com opinion.a.promo-market.net new-a-giftcard-uk.amazando.co iociley.com belombrea.com"
 
 if [ $# -eq 0 ]
